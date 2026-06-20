@@ -1,0 +1,23 @@
+models:
+  - name: stg_jaffle_shop_customer
+    description: Uncleansed version of shop customers data.
+    columns:
+      - name: customer_id
+        description: primary key for the table 
+        data_tests:
+          - unique
+          - not_null
+
+  - name: stg_jaffle_shop_orders
+    description: Uncleansed version of shop orders data.
+    columns:
+      - name: order_id
+        description: primary key for the table 
+        data_tests:
+          - unique
+          - not_null
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['placed', 'shipped', 'completed', 'returned', 'return_pending']
